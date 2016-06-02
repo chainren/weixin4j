@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_HOME" value="./log/" />
+	<appender name="FILE"
+	class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>./log/weixin4j.log</file>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>log${logid}.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5p [%c{0}] %m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5p [%c{0}] %m%n</pattern>
+		</encoder>
+	</appender>
+	<logger name="com.weixin4j" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>
